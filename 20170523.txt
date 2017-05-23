@@ -1,0 +1,4 @@
+Current Plan:
+
+Sudoku 1.0
+-Create 3 unique sudoku puzzle using backtracking 
