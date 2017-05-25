@@ -50,7 +50,7 @@ Daniel :: Created UML and flowchart
 2017-05-25
 -----------------------------------------------------------
 Brandon :: Began coding sudoku puzzle generator
-Daniel ::
+Daniel :: Began work on GUI
 ===========================================================
 
 2017-05-26
