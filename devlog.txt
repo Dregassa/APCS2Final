@@ -49,8 +49,13 @@ Daniel :: Created UML and flowchart
 
 2017-05-25
 -----------------------------------------------------------
+<<<<<<< HEAD
 Brandon :: Began coding sudoku puzzle generator
 Daniel :: Began work on GUI
+=======
+Brandon :: Updated plan and devlog, added proposal
+Daniel ::
+>>>>>>> 053e5c6ad4b7e3f81720bacd516c4f503234bc17
 ===========================================================
 
 2017-05-26

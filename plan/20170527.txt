@@ -1,0 +1,11 @@
+Peg
+Brandon Zhang
+Daniel Regassa
+
+2017-05-25
+
+We will be creating a new class Cell to hold information on which numbers could be added to different spots on the board. So instead of representing the board with a 2d array of ints, we will be doing so with a 2d array of Cells.
+
+In order to create random sudoku puzzles, we will first begin by placing the umbers 1-9 in random spots around the board. The cells on the board will continuosly update their information to show which numbers could be added. This will be done until the board is completely filled with a sudoku solution. 
+
+To remove the numbers from a completed sudoku solution, we will be using the information that the cells keep track of. As long as there is a single cell that has only 1 number that can be placed in it, more numbers will be removed until the limit specified by the difficulty level is reached. If there are no cells with only one number, we will back track to remove other numbers. 
