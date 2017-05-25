@@ -2,7 +2,9 @@ public class Sudoku{
   
   private int[][] _board;
   
-  Sudoko(){}
+  Sudoku(){
+    return;
+  }
   
   public int add(int row, int col, int val){
     int oldVal = _board[row][col];
@@ -16,6 +18,7 @@ public class Sudoku{
     return oldVal;
   }
   
-  public int get(int row, int col)
+  public int get(int row, int col){
     return _board[row][col];
+  }
 }
