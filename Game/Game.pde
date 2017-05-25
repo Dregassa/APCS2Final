@@ -1,5 +1,5 @@
 public class Game{
-  setup(){}
-  draw(){}
+  void setup(){}
+  void draw(){}
   
 }
