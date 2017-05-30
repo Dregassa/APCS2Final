@@ -19,10 +19,14 @@ public class Cell {
     xcor = x;
   }
 
+  public int getCurrentNum(){
+    return currentNum;
+  }
+
   public ArrayList validInputs(Sudoku s) {
     ArrayList<Boolean> a = compareRow(s);
     ArrayList<Boolean> b = compareCol(s);
-    Arraylist<Boolean> c = compareBox(s);
+    ArrayList<Boolean> c = compareBox(s);
 
     for (int i = 0; i < 9; i++) {
       if (a.get(i) && b.get(i) && c.get(i)) {
@@ -32,11 +36,11 @@ public class Cell {
   }
   
   public ArrayList<Boolean> compareRow(Sudoku s){
-    return s.getRow(xcor);
+    return s.getRow(ycor);
   }
   
   public ArrayList<Boolean> compareCol(Sudoku s){
-    return s.getCol(ycor);
+    return s.getCol(xcor);
   }
   
   public ArrayList<Boolean> compareBox(Sudoku s){
