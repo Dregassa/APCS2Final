@@ -5,7 +5,7 @@ public class Sudoku{
   Sudoku(){
     return;
   }
-  
+  /*
   public ArrayList<Boolean> getRow(){
   }
   
@@ -14,7 +14,7 @@ public class Sudoku{
   
   public ArrayList<Boolean> getBox(){
   }
-  
+  */
   public int add(int row, int col, int val){
     int oldVal = _board[row][col];
     _board[row][col] = val;
