@@ -2,7 +2,7 @@ boolean AT_TITLE_SCREEN = true;
 String GAMEMODE; 
 
 void setup(){
-  size(600,600);
+  size(630,630); // divisible by 9
   background(255);
   }
   
@@ -17,6 +17,7 @@ void draw(){
   }
   else{
     drawLines();
+    drawNumbers();
   }
 }
   
@@ -70,7 +71,14 @@ void drawLines(){
   
 }
 
-void drawNumbers(Sudoku s){
+void drawNumbers(){
   textAlign(CENTER);
+  fill(#FF0000);
+  textSize(50);
+  int width0 = width/18; // center of first box
+  int height0 = height/18 + height/36; // center of first box
+  text("1", width0, height0); 
+  text("1", width0 + width/9, height0); 
+  text("1", width0 + 2*width/9, height0);
   
 }

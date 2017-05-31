@@ -74,7 +74,7 @@ Daniel :: Created grid diagram to display Sudoku puzzle
 2017-05-31
 -----------------------------------------------------------
 Brandon :: Methods in Sudoku to check available numbers in boxes
-Daniel ::
+Daniel :: Implementation of usr input
 ===========================================================
 
 2017-06-01
