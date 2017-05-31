@@ -35,6 +35,7 @@ public class Cell {
     }
   }
   
+  //Returns arraylist of booleans corresponding to numbers 1-9. ex: if 1 appears in the row, the first spot in the array would be false
   public ArrayList<Boolean> compareRow(Sudoku s){
     return s.getRow(ycor);
   }
