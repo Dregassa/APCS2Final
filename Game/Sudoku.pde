@@ -5,8 +5,7 @@ public class Sudoku {
   Sudoku() {
     return;
   }
-<<<<<<< HEAD
-  /*
+
   public ArrayList<Boolean> getRow(){
 =======
 
@@ -25,7 +24,6 @@ public class Sudoku {
       }
     }
     return retList;
->>>>>>> e7efb15ffb9c33f2167dfbd171f77dccc09d58db
   }
 
   //returns the numbers available in the column of the cell
@@ -78,10 +76,9 @@ public class Sudoku {
     if (box == 1) {
       for (int i = 0; i < 4; i++) {
         for (int t = 0; t < 4; i++) {
-          if (_board[i][t].getCurrentNum() == 0) {
-            retList.add( i, false );
+          if (_board[i][t].getCurrentNum() != 0) {
+            retList.add( _board[i][t].getCurrentNum()-1, true );
           }
-          //if the spot is has a number, its corresponding spot in the array is true
           else {
             retList.add( i, true );
           }
@@ -90,13 +87,8 @@ public class Sudoku {
     }
     return retList;
   }
-<<<<<<< HEAD
-  */
-  public int add(int row, int col, int val){
-=======
-
+  
   public int add(int row, int col, int val) {
->>>>>>> e7efb15ffb9c33f2167dfbd171f77dccc09d58db
     int oldVal = _board[row][col];
     _board[row][col] = val;
     return oldVal;
