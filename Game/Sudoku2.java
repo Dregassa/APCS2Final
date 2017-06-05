@@ -117,7 +117,7 @@ public class Sudoku2{
 	return _bo;
     }
 
-    //90 degree turn
+    //90 degree turn needs fixing
     public int[][] nTurn(){
 	int[][] _newBo = new int[9][9];
 	for(int i = 0; i < 9; i++){
@@ -406,12 +406,24 @@ public class Sudoku2{
 	return _bo;
     }
 
+    public int[][] createPuzzle(){
+	if((int)(Math.random() *10) > 5)
+	    reflection();
+	if((int)(Math.random() *10) > 5)
+	    tripletSwap();
+	if((int)(Math.random() *10) > 5)
+	    swapNums();
+
+	removal(2);
+	return _bo;
+    }
+
     
     public static void main(String args[]){
 	Sudoku2 su = new Sudoku2();
 	Sudoku2 su1 = new Sudoku2();
-	su.removal(1);
-	su1.removal(2);
+	su.createPuzzle();
+	su1.createPuzzle();
 	System.out.println(su);
 	System.out.println(su1);
     }
