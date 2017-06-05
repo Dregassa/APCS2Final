@@ -2,9 +2,10 @@ public class Sudoku2{
 
     //Using transformations to create unique puzzles
     int[][] _bo = new int[9][9];
+    int[][] _boPuzzle = new int[9][9];
 
     Sudoku2(){
-	_bo[0][0] = 5;
+        _bo[0][0] = 5;
 	_bo[0][1] = 3;
 	_bo[0][2] = 4;
 	_bo[0][3] = 6;
@@ -199,30 +200,79 @@ public class Sudoku2{
 
     //Row and Column Inspectors
 
-    public String getRow(int y) {
-	String retstr = "";
+    public int[] getRow(int y) {
+	int[] ret = new int[9];
 	for (int i = 0; i < 9; i++){
-	    if (_board[i][y] != 0)
-		retstr += _board[i][y];
+	    if (_bo[i][y] != 0)
+		ret[i] = _bo[i][y];
 	}
-	return retstr;
+	return ret;
     }
 
-    public boolean getCol(int x) {
-        String retstr = "";
+    public int[] getCol(int x) {
+        int[] ret = new int[9];
 	for (int i = 0; i < 9; i++){
-	    if (_board[x][i] != 0)
-		retstr += _board[x][i];
+	    if (_bo[x][i] != 0)
+		ret[i] = _bo[x][i];
 	}
-	return retstr;
-    }
+	return ret;
     }
 
+    public int boxNum(int x, int y){
+	return 1;
+    }
+    
+    public int[] getBox(int x, int y){
+	int box = boxNum(x, y);
+	int[] ret = new int[9];
+	return ret;
+    }
 
-    public int[][] removal(){
+    /*
+    //When removing, checks the board to see if there is at least one spot where only one number would fit
+    public boolean checkAll(){
+	int solutionAvailable == 0;
+	for(int i = 0; i < 9 ; i++){
+	    for(int t = 0; t < 9; t++){
+		if(_bo[i][t] == 0){
+		    int[] teststr = getAll(i, t);
+		    if (teststr.length == 1){
+			solutionAvailable == 0;
+		    }
+		}
+	    }
+	}
+	if(solutionAvailable == 0){
+	    return false; 
+	}
+	else{
+	    return true; 
+	}
+    }
 	
+    public int[][] removal(int difficulty){
+	int numtoRemove = 0;
+	if (difficulty == 1)
+	    numtoRemove = 30;
+	if (difficulty == 2)
+	    numtoRemove = 40;
+	if (difficulty == 3)
+	    numtoRemove = 50;
+	for (int i = 0; i < numtoRemove; i++){
+	    int x = (int) (Math.random()*9);
+	    int y = (int) (Math.random()*9);
+	    int hold = _bo[x][y];
+	    _bo[x][y] = 0;
+	    if(checkAll){
+		//checks if the removal still makes a one solution puzzle
+	    }
+	    else{
+		i--; //if not, the number is not removed and the counter is reduced by 1
+		_bo[x][y] = hold;
+	    }
+	}
     }
-
+    */
     public static void main(String args[]){
 	Sudoku2 su = new Sudoku2();
 	System.out.println(su);
