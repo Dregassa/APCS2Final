@@ -77,8 +77,24 @@ void drawNumbers(){
   textSize(50);
   int width0 = width/18; // center of first box
   int height0 = height/18 + height/36; // center of first box
-  text("1", width0, height0); 
-  text("1", width0 + width/9, height0); 
-  text("1", width0 + 2*width/9, height0);
   
+  //text("1", width0, height0); 
+  //text("1", width0 + width/9, height0); 
+  //text("1", width0 + 2*width/9, height0);
+  
+  for (int row = 0; row < 9; row++){
+    for (int col = 0; col < 9; col++){
+      if(s[row][col] != 0){
+        text( str(s[row][col]), width0 + col * width/9, height0 + row* height/9);
+      }
+    }
+  }
+}
+
+void inputNum(){
+  System.out.println();
+}
+
+int [][] foo = {{0,2,3,4,5,6,7,8,9},{1,2,3,4,5,6,7,8,9},{1,2,3,4,5,6,7,8,9},{1,2,3,4,5,6,7,8,9},{1,2,3,4,5,6,7,8,9},
+                  {1,2,3,4,5,6,7,8,9},{1,2,3,4,5,6,7,8,9},{1,2,3,4,5,6,7,8,9},{1,2,3,4,5,6,7,8,9}};
 }
