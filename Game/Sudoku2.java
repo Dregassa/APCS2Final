@@ -204,7 +204,7 @@ public class Sudoku2{
 	int[] ret = new int[9];
 	for (int i = 0; i < 9; i++){
 	    if (_bo[i][y] != 0)
-		ret[i] = _bo[i][y];
+		ret[_bo[i][y]-1] = _bo[i][y];
 	}
 	return ret;
     }
@@ -213,70 +213,179 @@ public class Sudoku2{
         int[] ret = new int[9];
 	for (int i = 0; i < 9; i++){
 	    if (_bo[x][i] != 0)
-		ret[i] = _bo[x][i];
+		ret[_bo[x][i]-1] = _bo[x][i];
 	}
 	return ret;
     }
 
+    //determining which box the coordinate is located in
     public int boxNum(int x, int y){
-	return 1;
+	int bNum = 0;
+	if(x%3 == 0){
+	    if(y%3 == 0)
+		bNum = 1;
+	    else if (y%3 ==1)
+		bNum = 2;
+	    else
+		bNum = 3;
+	    
+	}
+	if(x%3 == 1){
+	    if(y%3 == 0)
+		bNum = 4;
+	    else if (y%3 ==1)
+		bNum = 5;
+	    else
+		bNum = 6;
+	}
+	else{
+	    if(y%3 == 0)
+		bNum = 7;
+	    else if (y%3 ==1)
+		bNum = 8;
+	    else
+		bNum = 9;
+	}
+	return bNum;
     }
     
     public int[] getBox(int x, int y){
 	int box = boxNum(x, y);
 	int[] ret = new int[9];
-	return ret;
-    }
-
-    /*
-    //When removing, checks the board to see if there is at least one spot where only one number would fit
-    public boolean checkAll(){
-	int solutionAvailable == 0;
-	for(int i = 0; i < 9 ; i++){
-	    for(int t = 0; t < 9; t++){
-		if(_bo[i][t] == 0){
-		    int[] teststr = getAll(i, t);
-		    if (teststr.length == 1){
-			solutionAvailable == 0;
-		    }
+	if(box == 1){
+	    for (int i = 0; i < 3; i++){
+		for(int t = 0; t < 3; t++){
+		    if (_bo[i][t] != 0)
+			ret[_bo[i][t]-1] = _bo[x][i];
 		}
 	    }
+	    return ret;
 	}
-	if(solutionAvailable == 0){
-	    return false; 
+	if(box == 2){
+	    for (int i = 3; i < 6; i++){
+		for(int t = 0; t < 3; t++){
+		    if (_bo[i][t] != 0)
+			ret[_bo[i][t]-1] = _bo[x][i];
+		}
+	    }
+	    return ret;
 	}
+	if(box == 3){
+	    for (int i = 6; i < 9; i++){
+		for(int t = 0; t < 3; t++){
+		    if (_bo[i][t] != 0)
+			ret[_bo[i][t]-1] = _bo[x][i];
+		}
+	    }
+	    return ret;
+	}
+	if(box == 4){
+	    for (int i = 0; i < 3; i++){
+		for(int t = 3; t < 6; t++){
+		    if (_bo[i][t] != 0)
+			ret[_bo[i][t]-1] = _bo[x][i];
+		}
+	    }
+	    return ret;
+	}
+	if(box == 5){
+	    for (int i = 3; i < 6; i++){
+		for(int t = 3; t < 6; t++){
+		    if (_bo[i][t] != 0)
+			ret[_bo[i][t]-1] = _bo[x][i];
+		}
+	    }
+	    return ret;
+	}
+	if(box == 6){
+	    for (int i = 6; i < 9; i++){
+		for(int t = 3; t < 6; t++){
+		    if (_bo[i][t] != 0)
+			ret[_bo[i][t]-1] = _bo[x][i];
+		}
+	    }
+	    return ret;
+	}
+	if(box == 7){
+	    for (int i = 0; i < 3; i++){
+		for(int t = 6; t < 9; t++){
+		    if (_bo[i][t] != 0)
+			ret[_bo[i][t]-1] = _bo[x][i];
+		}
+	    }
+	    return ret;
+	}
+	if(box == 8){
+	    for (int i = 3; i < 6;i++){
+		for(int t = 6; t < 9; t++){
+		    if (_bo[i][t] != 0)
+			ret[_bo[i][t]-1] = _bo[x][i];
+		}
+	    }
+	    return ret;
+	}
+	if(box == 9){
+	    for (int i = 6; i < 9; i++){
+		for(int t = 6; t < 9; t++){
+		    if (_bo[i][t] != 0)
+			ret[_bo[i][t]-1] = _bo[x][i];
+		}
+	    }
+	    return ret;
+	}
+	return ret;
+    }
+    
+    //returns whether or not the specific spot has 1 solution or none/more than 1
+    public boolean solutionAvailable(int x, int y){
+	int numSolution = 0;
+	for(int i = 0; i < 9; i++){
+	    if(getCol(x)[i] == 0 && getRow(y)[i] == 0 && getBox(x,y)[i] ==0){
+		numSolution ++;
+	    }
+	}
+	if(numSolution > 1)
+	    return false;
 	else{
-	    return true; 
+	    return true;
 	}
     }
+
 	
     public int[][] removal(int difficulty){
 	int numtoRemove = 0;
 	if (difficulty == 1)
 	    numtoRemove = 30;
 	if (difficulty == 2)
-	    numtoRemove = 40;
+	    numtoRemove = 35;
 	if (difficulty == 3)
-	    numtoRemove = 50;
+	    numtoRemove = 40;
 	for (int i = 0; i < numtoRemove; i++){
 	    int x = (int) (Math.random()*9);
 	    int y = (int) (Math.random()*9);
 	    int hold = _bo[x][y];
-	    _bo[x][y] = 0;
-	    if(checkAll){
-		//checks if the removal still makes a one solution puzzle
+	    if(_bo[x][y] != 0){
+		_bo[x][y] = 0;
+		if(solutionAvailable(x,y)){
+		    //checks if the removal still makes a one solution puzzle, if true, do nothing and continue removing
+		}
+		else{
+		    numtoRemove ++; //if not, the number is not removed and the counter is reduced by 1
+		    _bo[x][y] = hold;
+		}
 	    }
 	    else{
-		i--; //if not, the number is not removed and the counter is reduced by 1
-		_bo[x][y] = hold;
+		numtoRemove ++;
 	    }
 	}
+	return _bo;
     }
-    */
+
+    
     public static void main(String args[]){
 	Sudoku2 su = new Sudoku2();
 	System.out.println(su);
-	su.tripletSwap();
+	su.removal(3);
 	System.out.println(su);
     }
 
