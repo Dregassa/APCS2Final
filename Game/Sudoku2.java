@@ -2,7 +2,7 @@ public class Sudoku2{
 
     //Using transformations to create unique puzzles
     int[][] _bo = new int[9][9];
-    int[][] _boPuzzle = new int[9][9];
+    int[][] _boSol = new int[9][9];
 
     Sudoku2(){
         _bo[0][0] = 5;
@@ -86,13 +86,17 @@ public class Sudoku2{
 	_bo[8][6] = 1;
 	_bo[8][7] = 7;
 	_bo[8][8] = 9;
+	_boSol = _bo;
     }
 
     public String toString(){
 	String retstr = "";
 	for (int i = 0; i< 9; i++){
 	    for (int t = 0; t< 9; t++){
-		retstr += _bo[i][t] + " ";
+		if(_bo[i][t] == 0)
+		    retstr += "- ";
+		else
+		    retstr += _bo[i][t] + " ";
 	    }
 	    retstr += "\n";
 	}
@@ -351,31 +355,52 @@ public class Sudoku2{
 	}
     }
 
+    //checks board availabilty
+    public boolean solutionBoard(){
+	for(int i = 0; i < 9; i++){
+	    for(int t = 0; t < 9; t++){
+		if(solutionAvailable(i,t))
+		    return true;
+		else
+		    return false;
+	    }
+	}
+	return true;
+    }
+
 	
     public int[][] removal(int difficulty){
 	int numtoRemove = 0;
 	if (difficulty == 1)
-	    numtoRemove = 30;
+	    numtoRemove = 50;
 	if (difficulty == 2)
-	    numtoRemove = 35;
-	if (difficulty == 3)
-	    numtoRemove = 40;
+	    numtoRemove = 300;
 	for (int i = 0; i < numtoRemove; i++){
 	    int x = (int) (Math.random()*9);
 	    int y = (int) (Math.random()*9);
+
 	    int hold = _bo[x][y];
+
 	    if(_bo[x][y] != 0){
 		_bo[x][y] = 0;
+
 		if(solutionAvailable(x,y)){
 		    //checks if the removal still makes a one solution puzzle, if true, do nothing and continue removing
 		}
 		else{
+		    //kind of backtracking when there are no solutions
 		    numtoRemove ++; //if not, the number is not removed and the counter is reduced by 1
 		    _bo[x][y] = hold;
+		    if(!solutionBoard()){
+			int b = (int) (Math.random()*8);
+			int d = (int) (Math.random()*8);
+			while(_bo[b][d] != 0){
+			    b = (int) (Math.random()*8);
+			    d = (int) (Math.random()*8);
+			}
+			_bo[b][d] = _boSol[b][d];
+		    }
 		}
-	    }
-	    else{
-		numtoRemove ++;
 	    }
 	}
 	return _bo;
@@ -384,9 +409,11 @@ public class Sudoku2{
     
     public static void main(String args[]){
 	Sudoku2 su = new Sudoku2();
+	Sudoku2 su1 = new Sudoku2();
+	su.removal(1);
+	su1.removal(2);
 	System.out.println(su);
-	su.removal(3);
-	System.out.println(su);
+	System.out.println(su1);
     }
 
 }
