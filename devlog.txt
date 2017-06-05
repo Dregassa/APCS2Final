@@ -20,7 +20,7 @@ Cool Stuff Learned
 
 Mid-Development Design Changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--arrays no longer hold ints, hold new class Cell which will contain info of each cell (numbers that can be placed in it)
+-Not using cell class
 
 Lessons Learned
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -77,21 +77,16 @@ Brandon :: Methods in Sudoku to check available numbers in boxes
 Daniel :: Implementation of usr input
 ===========================================================
 
-2017-06-01
------------------------------------------------------------
-Brandon ::
-Daniel ::
-===========================================================
 
 2017-06-02
 -----------------------------------------------------------
-Brandon ::
+Brandon :: Finished writing code to check for columns and boxes
 Daniel ::
 ===========================================================
 
 2017-06-03
 -----------------------------------------------------------
-Brandon ::
+Brandon :: Board can be created with numbers not repeating in either rows or columns
 Daniel ::
 ===========================================================
 
