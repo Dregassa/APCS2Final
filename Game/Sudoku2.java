@@ -100,16 +100,133 @@ public class Sudoku2{
 
     //transformations
 
+    //reflection over y = -x
+    public int[][] reflection(){
+	int[][] _newBo = new int[9][9];
+	for(int i = 0; i < 9; i++){
+	    for(int t = 0; t<9; t++){
+		_newBo[i][t] = _bo[t][i];
+	    }
+	}
+	_bo = _newBo;
+	return _bo;
+    }
+
     //90 degree turn
+    public int[][] nTurn(){
+	int[][] _newBo = new int[9][9];
+	for(int i = 0; i < 9; i++){
+	    int[] row1 = new int[9];
+	}
+	_bo = _newBo;
+	return _bo;
+    }
 
     //swap triple groups
+    public int[][] tripletSwap(){
+	int rand = (int)(Math.random()*2);
+	int[][] _newBo = new int [9][9];
+	if(rand ==2){
+	    for (int i = 0; i < 3; i++){
+		for(int t = 0; t < 9; t++){
+		    _newBo[i][t] = _bo[i+3][t];
+		}
+	    }
+	    for (int i = 0; i < 3; i++){
+		for(int t = 0; t < 9; t++){
+		    _newBo[i+3][t] = _bo[i][t];
+		}
+	    }
+	    for (int i = 0; i < 3; i++){
+		for(int t = 0; t < 9; t++){
+		    _newBo[i+6][t] = _bo[i+6][t];
+		}
+	    }
+	}
+	if(rand ==1){
+	    for (int i = 0; i < 3; i++){
+		for(int t = 0; t < 9; t++){
+		    _newBo[i][t] = _bo[i+6][t];
+		}
+	    }
+	    for (int i = 0; i < 3; i++){
+		for(int t = 0; t < 9; t++){
+		    _newBo[i+3][t] = _bo[i+3][t];
+		}
+	    }
+	    for (int i = 0; i < 3; i++){
+		for(int t = 0; t < 9; t++){
+		    _newBo[i+6][t] = _bo[i][t];
+		}
+	    }
+	}
+	_bo = _newBo;
+	return _bo;
+    }
+    //swap numbers
+    public int[][] swapNums(){
+	int rand = (int)(Math.random() * 2);
+	if (rand == 0){
+	    for (int i = 0; i < 9; i++){
+		for (int t = 0; t < 9; t++){
+		    if(_bo[i][t] == 1){
+			_bo[i][t] = 9;
+		    }
+		    else if(_bo[i][t] == 9){
+			_bo[i][t] = 1;
+		    }
+		}
+	    }
+	}
+	else{
+	    for (int i = 0; i < 9; i++){
+		for (int t = 0; t < 9; t++){
+		    if(_bo[i][t] == 4){
+			_bo[i][t] = 5;
+		    }
+		    else if(_bo[i][t] == 5){
+			_bo[i][t] = 4;
+		    }
+		}
+	    }
+	}
+	return _bo;
+    }
 
     //swap rows
 
     //swap columns
 
+    //Row and Column Inspectors
+
+    public String getRow(int y) {
+	String retstr = "";
+	for (int i = 0; i < 9; i++){
+	    if (_board[i][y] != 0)
+		retstr += _board[i][y];
+	}
+	return retstr;
+    }
+
+    public boolean getCol(int x) {
+        String retstr = "";
+	for (int i = 0; i < 9; i++){
+	    if (_board[x][i] != 0)
+		retstr += _board[x][i];
+	}
+	return retstr;
+    }
+    }
+
+
+    public int[][] removal(){
+	
+    }
+
     public static void main(String args[]){
 	Sudoku2 su = new Sudoku2();
+	System.out.println(su);
+	su.tripletSwap();
 	System.out.println(su);
     }
 
