@@ -1,0 +1,7 @@
+Peg
+Brandon Zhang
+Daniel Regassa
+
+2017-06-04
+
+Difficult to implement plan to create randomly generated sudoku puzzles. Cell class removed because it would be hard to name all 81 and keep updating.Will first create solutions by implementing transformations and randomize removal, which will still create a decent amount of puzzles.
