@@ -87,7 +87,6 @@ class Sudoku {
     _bo[8][6] = 1;
     _bo[8][7] = 7;
     _bo[8][8] = 9;
-    _boSol = _bo;
     _boPuz = createPuzzle(i);
   }
 
@@ -222,25 +221,25 @@ class Sudoku {
   //determining which box the coordinate is located in
   int boxNum(int x, int y) {
     int bNum = 0;
-    if (x%3 == 0) {
-      if (y%3 == 0)
+    if (x/3 == 0) {
+      if (y/3 == 0)
         bNum = 1;
-      else if (y%3 ==1)
+      else if (y/3 ==1)
         bNum = 2;
       else
         bNum = 3;
     }
-    if (x%3 == 1) {
-      if (y%3 == 0)
+    if (x/3 == 1) {
+      if (y/3 == 0)
         bNum = 4;
-      else if (y%3 ==1)
+      else if (y/3 ==1)
         bNum = 5;
       else
         bNum = 6;
     } else {
-      if (y%3 == 0)
+      if (y/3 == 0)
         bNum = 7;
-      else if (y%3 ==1)
+      else if (y/3 ==1)
         bNum = 8;
       else
         bNum = 9;
@@ -402,13 +401,15 @@ class Sudoku {
   }
 
   int[][] createPuzzle(int i) {
-    if ((int)(Math.random() *10) > 5)
-      reflection();
-    if ((int)(Math.random() *10) > 5)
-      tripletSwap();
-    if ((int)(Math.random() *10) > 5)
-      swapNums();
-
+    /*
+    if ((int)(Math.random() *10) > 5){
+     reflection();}
+     if ((int)(Math.random() *10) > 5){
+     tripletSwap();}
+     if ((int)(Math.random() *10) > 5){
+     swapNums();}
+     */
+    _boSol = _bo;
     removal(i);
     return _bo;
   }

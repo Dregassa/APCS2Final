@@ -26,20 +26,35 @@ void mouseClicked() {
   if (mode == 1)
     mode ++;
   else if (mode == 2) {
-    int x = mouseX;
-    int y = mouseY;
-    int xcor = coordinateGet(x);
-    int ycor = coordinateGet(y);
-    System.out.println(xcor);
-    System.out.println(ycor);
-    System.out.println("What would you like to insert at (" + (xcor+1) + "," + (ycor+1) +") ?");
-    keyPressed(xcor, ycor);
   }
 }
 
-void keyPressed(int x, int y) {
-    s1.puzzle()[x][y] = key;
-    System.out.println("this is" + key);
+void keyPressed() {
+  //hint
+  if(mode ==2){
+    int x = (int)(Math.random()*9);
+    int y = (int)(Math.random()*9);
+    //find a spot that is 0 (no solution)
+    while (s1.puzzle()[x][y] !=0) {
+      x = (int)(Math.random()*9);
+      y = (int)(Math.random()*9);
+    }
+    //replace with solution
+    System.out.println(s1.puzzle()[x][y]);
+    System.out.println(s1._bo);
+    s1.puzzle()[x][y] = s1._bo[x][y];
+    System.out.println(s1.puzzle()[x][y]);
+  /* inserting a correct number
+   int x = mouseX;
+   int y = mouseY;
+   int xcor = coordinateGet(x);
+   int ycor = coordinateGet(y);
+   if (key == s1.sol()[xcor][ycor])
+   s1.puzzle()[xcor][ycor] = key;
+   System.out.println("this is" + key);
+   System.out.println(s1.sol()[xcor][ycor]);
+   */
+  }
 }
 
 void drawTitle() { // draws "SUDOKU" at the top of the page
