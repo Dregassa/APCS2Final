@@ -25,12 +25,21 @@ void draw() {
 void mouseClicked() {
   if (mode == 1)
     mode ++;
-  if (mode == 2){
+  else if (mode == 2) {
     int x = mouseX;
     int y = mouseY;
     int xcor = coordinateGet(x);
     int ycor = coordinateGet(y);
+    System.out.println(xcor);
+    System.out.println(ycor);
+    System.out.println("What would you like to insert at (" + (xcor+1) + "," + (ycor+1) +") ?");
+    keyPressed(xcor, ycor);
   }
+}
+
+void keyPressed(int x, int y) {
+    s1.puzzle()[x][y] = key;
+    System.out.println("this is" + key);
 }
 
 void drawTitle() { // draws "SUDOKU" at the top of the page
@@ -96,38 +105,29 @@ void drawNumbers() {
   }
 }
 
-void gameOn(){
-  
+void gameOn() {
 }
 
-int coordinateGet(int c){
+int coordinateGet(int c) {
   int cor=0;
-  if(c < 70){
+  if (c < 70) {
+    cor = 0;
+  } else if (c < 140) {
     cor = 1;
-  }
-  else if(c < 140){
+  } else if (c < 210) {
     cor = 2;
-  }
-  else if(c < 210){
+  } else if (c < 280) {
     cor = 3;
-  }
-  else if(c < 280){
+  } else if (c < 350) {
     cor = 4;
-  }
-  else if(c < 350){
+  } else if (c < 420) {
     cor = 5;
-  }
-  else if(c < 420){
+  } else if (c < 490) {
     cor = 6;
-  }
-  else if(c < 490){
+  } else if (c < 560) {
     cor = 7;
-  }
-  else if(c < 560){
+  } else if (c < 630) {
     cor = 8;
-  }
-  else if(c < 630){
-    cor = 9;
   }
   return cor;
 }
