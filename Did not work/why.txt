@@ -1,0 +1,5 @@
+Why goals were not achieved
+
+Cell class did not work because using it would require instantiating 81 cells every time a new puzzle was created.
+
+Sudoku puzzle generator was not completed because of issues with inserting numbers. First tried to create it by randomly inserting numbers into the array, but there is a limit to how this can create a puzzle, as randomly inserting may sometimes lead to a case where there is no space to put in new numbers while still adhering to the rules. Extensive backtracking was needed.
