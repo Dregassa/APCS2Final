@@ -5,6 +5,7 @@ Sudoku s1 = new Sudoku(2);
 void setup() {
   size(630, 630); // divisible by 9
   background(255);
+  System.out.println(s1);
 }
 
 
@@ -13,12 +14,14 @@ void draw() {
   if (mode == 1) {
     drawTitle();
     drawCenteredTextBox("PLAY", 250, 200, 100, #00FF00, #FF0000 );
-    drawCenteredTextBox("SOLVE", 450, 200, 100, #00FF00, #FF0000 );
   }
   if (mode == 2) {
     drawLines();
     drawNumbers();
-    gameOn();
+  }
+  if (mode == 3) {
+    drawLines();
+    drawNumbers();
   }
 }
 
@@ -26,36 +29,33 @@ void mouseClicked() {
   if (mode == 1)
     mode ++;
   else if (mode == 2) {
+    mode ++;
   }
 }
 
 void keyPressed() {
   //hint
-  if(mode ==2){
+  if (mode == 2 && key == 'h') {
     int x = (int)(Math.random()*9);
     int y = (int)(Math.random()*9);
     //find a spot that is 0 (no solution)
-    while (s1.puzzle()[x][y] !=0) {
+    while (s1._boPuz[x][y] !=0) {
       x = (int)(Math.random()*9);
       y = (int)(Math.random()*9);
     }
-    //replace with solution
-    System.out.println(s1.puzzle()[x][y]);
-    System.out.println(s1._bo);
-    s1.puzzle()[x][y] = s1._bo[x][y];
-    System.out.println(s1.puzzle()[x][y]);
-  /* inserting a correct number
-   int x = mouseX;
-   int y = mouseY;
-   int xcor = coordinateGet(x);
-   int ycor = coordinateGet(y);
-   if (key == s1.sol()[xcor][ycor])
-   s1.puzzle()[xcor][ycor] = key;
-   System.out.println("this is" + key);
-   System.out.println(s1.sol()[xcor][ycor]);
-   */
+    s1._boPuz[x][y] = s1._boSolution[x][y];
+  }
+  if (mode == 3) {
+    int a = mouseX;
+    int b = mouseY;
+    int xcor = coordinateGet(a);
+    int ycor = coordinateGet(b);
+    if (Character.getNumericValue(key) == s1._boSolution[ycor][xcor])
+      s1._boPuz[ycor][xcor] = Character.getNumericValue(key);
+    mode --;
   }
 }
+
 
 void drawTitle() { // draws "SUDOKU" at the top of the page
   textSize(70);
@@ -113,14 +113,11 @@ void drawNumbers() {
 
   for (int row = 0; row < 9; row++) {
     for (int col = 0; col < 9; col++) {
-      if (s1.puzzle()[row][col] != 0) {
-        text( str(s1.puzzle()[row][col]), width0 + col * width/9, height0 + row* height/9);
+      if (s1._boPuz[row][col] != 0) {
+        text( str(s1._boPuz[row][col]), width0 + col * width/9, height0 + row* height/9);
       }
     }
   }
-}
-
-void gameOn() {
 }
 
 int coordinateGet(int c) {

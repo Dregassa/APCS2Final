@@ -2,7 +2,7 @@ class Sudoku {
 
   //Using transformations to create unique puzzles
   int[][] _bo = new int[9][9];
-  int[][] _boSol = new int[9][9];
+  int[][] _boSolution = new int[9][9];
   int[][] _boPuz = new int [9][9];
 
   Sudoku(int i) {
@@ -94,10 +94,10 @@ class Sudoku {
     String retstr = "";
     for (int i = 0; i< 9; i++) {
       for (int t = 0; t< 9; t++) {
-        if (_bo[i][t] == 0)
+        if (_boSolution[i][t] == 0)
           retstr += "- ";
         else
-          retstr += _bo[i][t] + " ";
+          retstr += _boSolution[i][t] + " ";
       }
       retstr += "\n";
     }
@@ -193,11 +193,7 @@ class Sudoku {
     }
     return _bo;
   }
-
-  //swap rows
-
-  //swap columns
-
+  
   //Row and Column Inspectors
 
   int[] getRow(int y) {
@@ -392,7 +388,7 @@ class Sudoku {
               b = (int) (Math.random()*8);
               d = (int) (Math.random()*8);
             }
-            _bo[b][d] = _boSol[b][d];
+            _bo[b][d] = _boSolution[b][d];
           }
         }
       }
@@ -401,24 +397,20 @@ class Sudoku {
   }
 
   int[][] createPuzzle(int i) {
-    /*
-    if ((int)(Math.random() *10) > 5){
-     reflection();}
-     if ((int)(Math.random() *10) > 5){
-     tripletSwap();}
-     if ((int)(Math.random() *10) > 5){
-     swapNums();}
-     */
-    _boSol = _bo;
+
+    if ((int)(Math.random() *10) > 5) {
+      reflection();
+    }
+    if ((int)(Math.random() *10) > 5) {
+      swapNums();
+    }
+
+    for (int a = 0; a < 9; a++) {
+      for (int b = 0; b < 9; b ++) {
+        _boSolution[a][b] = _bo[a][b];
+      }
+    }
     removal(i);
     return _bo;
-  }
-
-  int[][] puzzle() {
-    return _boPuz;
-  }
-
-  int[][] sol() {
-    return _boSol;
   }
 }
